@@ -42,3 +42,7 @@ out/
 
 ### Exclusions ###
 !**/artifacts/app-ibank-build-for-testers.jar
+!gradle/wrapper/gradle-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
