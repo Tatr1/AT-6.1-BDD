@@ -1,15 +1,26 @@
 package ru.netology.web.page;
 
+import com.codeborne.selenide.SelenideElement;
+import ru.netology.web.data.DataHelper;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class TransferPage {
+    private SelenideElement transferPage = $(withText("Пополнение карты"));
 
-    public TransferPage(int transfer) {
-        $$(withText("Пополнить")).first().click();
-        $("[data-test-id=amount] input").setValue(Integer.toString(transfer));
-        $("[data-test-id=from] input").setValue("5559 0000 0000 0002");
-        $(withText("Пополнить")).click();
+    private SelenideElement amountInput = $("[data-test-id=amount] input");
+    private SelenideElement fromInput = $("[data-test-id=from] input");
+    private SelenideElement transferButton = $(withText("Пополнить"));
+
+    public TransferPage() {
+        transferPage.shouldBe(visible);
+    }
+
+    public void makeTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
+        amountInput.setValue(amountToTransfer);
+        fromInput.setValue(cardInfo.getCardNumber());
+        transferButton.click();
     }
 }

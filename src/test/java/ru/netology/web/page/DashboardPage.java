@@ -29,16 +29,6 @@ public class DashboardPage {
         return extractBalance(text);
     }
 
-    public String getFirstCard() {
-        String text = cards.first().text();
-        return numberCard(text);
-    }
-
-    public String getSecondCard() {
-        String text = cards.last().text();
-        return numberCard(text);
-    }
-
     private int extractBalance(String text) {
         int start = text.indexOf(balanceStart);
         int finish = text.indexOf(balanceFinish);
@@ -51,17 +41,15 @@ public class DashboardPage {
         String value = text.substring(balanceStart.length(), finish);
         return value;
     }
+
+    public TransferPage getFirstCard() {
+        cards.first().find("button").click();
+        return new TransferPage();
+    }
+
+    public TransferPage getSecondCard() {
+        cards.last().find("button").click();
+        return new TransferPage();
+    }
 }
 
-//  public int getCardBalance(String id) {
-//    // TODO: перебрать все карты и найти по атрибуту data-test-id
-//    return extractBalance(text);
-//  }
-//  public int getCardBalance(ElementsCollection cards) {
-//    //     Таким образом, метод getFirstCardBalance умеет получать баланс карты. Не сложно его модифицировать под то, чтобы он назывался getCardBalance и умел получать баланс по индексу (см. документацию на ElementsCollection).
-//  }
-//  public int getCardBalance() {
-//    int nCard = cards.size();
-//    String text = cards.get(nCard).text();
-//    return extractBalance(text);
-//     }

@@ -11,5 +11,4 @@ public class LoginPageV1 {
         $("[data-test-id=action-login]").click();
         return new VerificationPage();
     }
-
 }
