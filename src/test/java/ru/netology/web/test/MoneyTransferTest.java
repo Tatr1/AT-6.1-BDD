@@ -19,7 +19,7 @@ class MoneyTransferTest {
         var balansSecondCardStartTest = dashboardPage.getSecondCardBalance();
         int transfer = 1000;
         var transferPage = dashboardPage.getFirstCard();
-        transferPage.makeTransfer(String.valueOf(transfer), DataHelper.getSecondCardInfo()); //п.7
+        transferPage.makeTransfer(String.valueOf(transfer), DataHelper.getSecondCardInfo());
         var balansFirstCardEndTest = dashboardPage.getFirstCardBalance();
         var balansSecondCardEndTest = dashboardPage.getSecondCardBalance();
         assertEquals(balansFirstCardStartTest + transfer, balansFirstCardEndTest);
@@ -35,7 +35,7 @@ class MoneyTransferTest {
         var dashboardPage = verificationPage.validVerify(verificationCode);
         var balansFirstCardStartTest = dashboardPage.getFirstCardBalance();
         var balansSecondCardStartTest = dashboardPage.getSecondCardBalance();
-        int transfer = 20000;
+        int transfer = balansSecondCardStartTest + 1000;
         var transferPage = dashboardPage.getFirstCard();
         transferPage.makeTransfer(String.valueOf(transfer), DataHelper.getSecondCardInfo());
         var balansFirstCardEndTest = dashboardPage.getFirstCardBalance();
